@@ -1,0 +1,68 @@
+{
+  "name": "file-fusion",
+  "productName": "FileFusion",
+  "version": "1.0.0",
+  "description": "Concatenate files into a single file",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package-mac": "electron-packager . FileFusion --platform=darwin --arch=x64 --out=dist --overwrite --icon=logo.icns",
+    "package-win": "electron-packager . FileFusion --platform=win32 --arch=x64 --out=dist --overwrite --icon=logo.ico",
+    "package-mac-universal": "electron-packager . FileFusion --platform=darwin --arch=universal --out=dist --overwrite --icon=logo.icns",
+    "build": "electron-builder build --mac --win --publish never",
+    "build-mac-intel": "electron-builder build --mac --x64 --publish never",
+    "build-mac-silicon": "electron-builder build --mac --arm64 --publish never",
+    "build-win": "electron-builder build --win --publish never"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "micromatch": "^4.0.8"
+  },
+  "build": {
+    "appId": "com.filefusion.app",
+    "productName": "FileFusion",
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}"
+    ],
+    "asar": true,
+    "compression": "maximum",
+    "mac": {
+      "icon": "logo.icns",
+      "target": ["dmg", "zip"]
+    },
+    "win": {
+      "icon": "logo.ico",
+      "target": ["nsis", "zip"]
+    },
+    "dmg": {
+      "contents": [
+        { "x": 130, "y": 220 },
+        { "x": 410, "y": 220, "type": "link", "path": "/Applications" }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "generateUpdatesFilesForAllChannels": false
+  }
+}

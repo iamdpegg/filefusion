@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>FileFusion</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f7fa;
+        color: #333;
+        min-width: 340px;
+      }
+      .container {
+        position: relative;
+        max-width: 800px;
+        min-width: 300px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+        text-align: center;
+        margin-top: 0px;
+        font-size: 2.2em;
+      }
+      button {
+        margin: 15px 0;
+        padding: 12px 20px;
+        width: 100%;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        font-weight: bold;
+      }
+      button:hover {
+        background-color: #357abd;
+        /* transform: translateY(-2px); */
+      }
+      button:active {
+        transform: translateY(0);
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        resize: none;
+        outline: none;
+        color: #777777;
+      }
+      label {
+        font-weight: bold;
+        color: #777777;
+        display: block;
+        margin-top: 15px;
+      }
+      #status {
+        padding: 15px;
+        border: 1px solid #cccccc;
+        height: 150px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        background-color: #f8fafc;
+        border-radius: 6px;
+        font-family: monospace;
+        font-size: 14px;
+        color: #777777;
+      }
+      .selected-info {
+        background-color: #ebf4ff;
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        border: 1px solid #bfdbfe;
+      }
+      #selected-directory,
+      #selected-output {
+        background-color: #f1f5f9;
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        border: 1px solid #cccccc;
+        color: #777777;
+        font-family: monospace;
+      }
+      h2 {
+        color: #2d3748;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-size: 1em;
+      }
+
+      #select-directory {
+        margin-top: 0px;
+      }
+
+      /* Dark mode styles */
+      body.dark-mode {
+        background-color: #1a202c;
+        color: #cccccc;
+      }
+      body.dark-mode .container {
+        background-color: #2d3748;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+      body.dark-mode h1,
+      body.dark-mode h2,
+      body.dark-mode label {
+        color: #f7fafc;
+      }
+      body.dark-mode button {
+        background-color: #4299e1;
+      }
+      body.dark-mode button:hover {
+        background-color: #3182ce;
+      }
+      body.dark-mode input,
+      body.dark-mode textarea {
+        background-color: #2d3748;
+        border: 1px solid #777777;
+        color: #cccccc;
+      }
+      body.dark-mode #status {
+        background-color: #2d3748;
+        border: 1px solid #777777;
+        color: #cccccc;
+      }
+      body.dark-mode #selected-directory,
+      body.dark-mode #selected-output {
+        background-color: #2d3748;
+        border: 1px solid #777777;
+        color: #cccccc;
+      }
+      body.dark-mode .selected-info {
+        background-color: #2c5282;
+        border: 1px solid #4299e1;
+      }
+    </style>
+  </head>
+  <body class="dark-mode">
+    <div class="container">
+      <button id="select-directory">Select Input Directory</button>
+      <div id="selected-directory">No directory selected.</div>
+
+      <label for="exclude-regex">Exclude Patterns (one per line):</label>
+      <textarea
+        id="exclude-regex"
+        rows="4"
+        placeholder="e.g., *.json, .git/"
+      ></textarea>
+
+      <button id="select-output">Select Output File Location</button>
+      <div id="selected-output">No output file selected.</div>
+
+      <button id="start-concatenation">Merge Files</button>
+
+      <h2>Status Log</h2>
+      <div id="status"></div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

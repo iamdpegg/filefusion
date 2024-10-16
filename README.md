@@ -22,9 +22,14 @@ FileFusion is a desktop application designed to help users consolidate multiple 
 To install FileFusion:
 
 1. Go to the [Releases](https://github.com/iamdpegg/filefusion/releases) section of the GitHub repository.
-2. Download the ZIP file for your operating system (Windows, macOS, or Linux).
-3. Extract the contents of the ZIP file to your desired location.
-4. Run the FileFusion executable.
+2. Download the appropriate file for your operating system:
+   - For macOS: Download the `.dmg` file (use arm64 for silicon-based Macs)
+   - For Windows: Coming soon
+3. Install the application:
+   - On macOS: Open the `.dmg` file and drag FileFusion to your Applications folder
+   - On Windows: Installation instructions will be provided when available
+
+Note: We are actively working on Windows and Linux versions. Check back soon for updates!
 
 ## Usage
 
